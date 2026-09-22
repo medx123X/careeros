@@ -54,6 +54,19 @@ npm run build
 3. Click "Load unpacked"
 4. Select the `extension/dist` folder (after running `npm run build`)
 
+## Later Usage
+
+After the first installation, start the local backend whenever you want to use CareerOS:
+
+```powershell
+cd C:\Users\Asus\Desktop\CareerOS\careeros\backend
+uvicorn app.main:app --reload
+```
+
+Keep the PowerShell window open while using CareerOS, then click the CareerOS icon in Chrome. You do not need to reinstall or rebuild the extension each time.
+
+The extension currently connects to `http://localhost:8000`, so the backend must be running on the same computer.
+
 ## Development
 
 ### Extension Commands
