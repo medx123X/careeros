@@ -21,23 +21,20 @@ careeros/
 
 ### Backend Setup
 
-```bash
+In Windows PowerShell, from the project folder:
+
+```powershell
 cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-pip install -e ".[dev]"
-
-# Set up environment
-cp .env.example .env  # On Windows: copy .env.example .env
-# Set a unique SECRET_KEY in .env
-
-# Run database migrations
+py -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install -e ".[dev]"
+Copy-Item .env.example .env
+# Edit .env and replace SECRET_KEY with a unique random value.
 alembic upgrade head
-
-# Start development server
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --reload-dir app
 ```
+
+If PowerShell blocks activation, use `Set-ExecutionPolicy -Scope Process Bypass` in that terminal, then run the activation command again. For macOS or Linux, activate with `source venv/bin/activate` and copy the environment file with `cp .env.example .env`.
 
 ### Extension Setup
 
@@ -59,8 +56,9 @@ npm run build
 After the first installation, start the local backend whenever you want to use CareerOS:
 
 ```powershell
-cd C:\Users\Asus\Desktop\CareerOS\careeros\backend
-uvicorn app.main:app --reload
+cd backend
+.\venv\Scripts\Activate.ps1
+uvicorn app.main:app --reload --reload-dir app
 ```
 
 Keep the PowerShell window open while using CareerOS, then click the CareerOS icon in Chrome. You do not need to reinstall or rebuild the extension each time.
